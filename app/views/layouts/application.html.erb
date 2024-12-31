@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-100">
   <head>
     <title><%= content_for(:title) || "Igcms" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,9 +21,18 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "font-awesome/all" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="h-full">
+    <div class="min-h-full">
+      <%= render "layouts/navbar" %>
+      <%= render "layouts/header" %>
+      <main>
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <%= yield %>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
