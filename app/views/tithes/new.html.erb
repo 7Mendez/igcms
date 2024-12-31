@@ -1,0 +1,11 @@
+<% content_for :title, "New tithe" %>
+
+<h1>New tithe</h1>
+
+<%= render "form", tithe: @tithe %>
+
+<br>
+
+<div>
+  <%= link_to "Back to tithes", tithes_path %>
+</div>

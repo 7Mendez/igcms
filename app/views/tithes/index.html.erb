@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Diezmos" %>
+<% content_for :count, @tithes.count %>
+
+
+<div class="md:flex md:items-end md:justify-end">
+  <%= render :partial => 'utils/add_new_bottom', locals: { path: new_tithe_path } %>
+</div>
+
+<div id="members">
+  <%=
+      render partial: 'utils/dynamic_table', locals: {
+        table_id: 'offeringsDataTable',
+        headers: %w[Fecha Miembro Cantidad Nota Acciones],
+        rows: @tithes.map { |tithe| [tithe.date, tithe.member.name, tithe.amount, tithe.note, { path: tithe_path(tithe) }] }
+      }
+  %>
+</div>

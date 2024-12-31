@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Ofrendas" %>
+<% content_for :count, @offerings.count %>
+
+
+<div class="md:flex md:items-end md:justify-end">
+  <%= render :partial => 'utils/add_new_bottom', locals: { path: new_offering_path } %>
+</div>
+
+<div id="members">
+  <%=
+      render partial: 'utils/dynamic_table', locals: {
+        table_id: 'offeringsDataTable',
+        headers: %w[Fecha Miembro Tipo Cantidad Nota Acciones],
+        rows: @offerings.map { |offering| [offering.date, offering.member.name, offering.offering_type, offering.amount, offering.note, { path: offering_path(offering) }] }
+      }
+  %>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tithe %>
+
+<div>
+  <%= link_to "Edit this tithe", edit_tithe_path(@tithe) %> |
+  <%= link_to "Back to tithes", tithes_path %>
+
+  <%= button_to "Destroy this tithe", @tithe, method: :delete %>
+</div>

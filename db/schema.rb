@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_31_224949) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_31_235032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,5 +35,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_31_224949) do
     t.index ["member_id"], name: "index_offerings_on_member_id"
   end
 
+  create_table "tithes", force: :cascade do |t|
+    t.decimal "amount"
+    t.text "note"
+    t.date "date"
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_tithes_on_member_id"
+  end
+
   add_foreign_key "offerings", "members"
+  add_foreign_key "tithes", "members"
 end
