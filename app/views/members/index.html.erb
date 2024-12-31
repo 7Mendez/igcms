@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Miembros" %>
+<% content_for :count, @members.count %>
+
+
+<div class="md:flex md:items-end md:justify-end">
+  <%= render :partial => 'utils/add_new_bottom', locals: { path: new_member_path } %>
+</div>
+
+<div id="members">
+  <%=
+    render partial: 'utils/dynamic_table', locals: {
+      table_id: 'membersDataTable',
+      headers: ['Nombre', 'Estado', 'Fecha de Bautismo', 'Espíritu Santo', 'Visitante', 'Acciones'],
+      rows: @members.map { |member| [member.name, member.status ? :active : :inactive, member.baptism_date, member.holy_spirit, member.visitor, { path: member_path(member) }] }
+    }
+  %>
+</div>

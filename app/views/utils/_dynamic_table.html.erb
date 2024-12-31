@@ -1,0 +1,60 @@
+<div class="flex flex-col mt-6 mb-10">
+  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+      <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+        <table id="<%= table_id %>" class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+
+          <thead class="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <% headers.each do |header| %>
+                <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                  <%= header %> &nbsp;
+                  <% unless header.include?("Acciones") %>
+                    <i class="fa-solid fa-sort"></i>
+                  <% end %>
+                </th>
+              <% end %>
+            </tr>
+          </thead>
+
+          <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+            <% rows.each do |row| %>
+              <tr>
+                <% row.each do |cell| %>
+                  <td class="px-4 py-4 text-sm whitespace-nowrap">
+                    <% if cell == true %>
+                      <i class="fas fa-check text-green-500"></i>
+                    <% elsif cell == false %>
+                      <i class="fas fa-times text-red-500"></i>
+
+                    <% elsif cell == :active %>
+                      <button class="flex items-center gap-x-2">
+                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                        <h2 class="text-sm font-normal text-emerald-500">Activo</h2>
+                      </button>
+                    <% elsif cell == :inactive %>
+                      <button class="flex items-center gap-x-2">
+                        <span class="h-1.5 w-1.5 rounded-full bg-red-500"></span>
+                        <h2 class="text-sm font-normal text-red-500">Inactivo</h2>
+                      </button>
+                    <% elsif cell.is_a?(Hash) %>
+                      <div class="flex items-center gap-x-6">
+                        <%= link_to cell[:path], class: "text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none" do %>
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                          </svg>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <%= cell %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
