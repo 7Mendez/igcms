@@ -2,7 +2,7 @@ import 'datatables.net';
 import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('#offeringsDataTable').DataTable({
+  $('#simpleDataTable').DataTable({
     paging: false,
     searching: false,
     ordering: true,

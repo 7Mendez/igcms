@@ -11,7 +11,7 @@
 <div id="members">
   <%=
       render partial: 'utils/dynamic_table', locals: {
-        table_id: 'offeringsDataTable',
+        table_id: 'simpleDataTable',
         headers: %w[Fecha Miembro Tipo Cantidad Nota Acciones],
         rows: @offerings.map { |offering| [offering.date, offering.member.name, offering.offering_type, offering.amount, offering.note, { path: offering_path(offering) }] }
       }
