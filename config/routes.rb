@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "members#index"
+  resource :session
   resources :diezmos, as: :tithes, controller: "tithes"
   resources :ofrendas, as: :offerings, controller: "offerings"
   resources :miembros, as: :members, controller: "members"
