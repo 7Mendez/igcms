@@ -13,7 +13,8 @@
     render partial: 'utils/dynamic_table', locals: {
       table_id: 'membersDataTable',
       headers: ['Nombre', 'Estado', 'Fecha de Bautismo', 'Espíritu Santo', 'Visitante', 'Acciones'],
-      rows: @members.map { |member| [member.name, member.status ? :active : :inactive, member.baptism_date, member.holy_spirit, member.visitor, { path: member_path(member) }] }
+      rows: @members.map { |member| [member.name, member.status ? :active : :inactive, member.baptism_date, member.holy_spirit, member.visitor, { path: member_path(member) }] },
+      hide_rows: [],
     }
   %>
 </div>

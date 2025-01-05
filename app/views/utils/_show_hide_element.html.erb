@@ -1,0 +1,13 @@
+<div class="flex items-center gap-x-3">
+  <% if show %>
+    <%= link_to path, class: "text-blue-dark font-semibold py-2 px-4 border border-blue rounded" do %>
+      <li class="fa-solid fa-eye"></li>
+      <span>Mostrar <%= element %></span>
+    <% end %>
+  <% else %>
+    <%= link_to path, class: "text-blue-dark font-semibold py-2 px-4 border border-blue rounded" do %>
+      <li class="fa-solid fa-eye-slash"></li>
+      <span>Ocultar <%= element %></span>
+    <% end %>
+  <% end %>
+</div>

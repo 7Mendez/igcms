@@ -4,7 +4,8 @@
 <% content_for :count, @tithes.count %>
 
 
-<div class="md:flex md:items-end md:justify-end">
+<div class="md:flex md:items-center md:justify-between">
+  <%= render :partial => 'utils/show_hide_element', locals: { element: "cantidad", path: tithes_path(show_amount: params[:show_amount] != "true"), show: params[:show_amount] != "true" } %>
   <%= render :partial => 'utils/add_new_bottom', locals: { path: new_tithe_path } %>
 </div>
 
@@ -13,7 +14,8 @@
       render partial: 'utils/dynamic_table', locals: {
         table_id: 'simpleDataTable',
         headers: %w[Fecha Miembro Cantidad Nota Acciones],
-        rows: @tithes.map { |tithe| [tithe.date, tithe.member.name, tithe.amount, tithe.note, { path: tithe_path(tithe) }] }
+        rows: @tithes.map { |tithe| [tithe.date, tithe.member.name, tithe.amount, tithe.note, { path: tithe_path(tithe) }] },
+        hide_rows: params[:show_amount] == "true" ? [] : [2]
       }
   %>
 </div>
