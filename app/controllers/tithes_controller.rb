@@ -1,4 +1,5 @@
 class TithesController < ApplicationController
+  before_action :user_is_allowed_to_access_module?
   before_action :set_tithe, only: %i[ show edit update destroy ]
 
   # GET /tithes or /tithes.json

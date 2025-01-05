@@ -13,6 +13,10 @@
         </div>
       </div>
 
+      <div class=" hidden md:flex justify-end">
+        <%= link_to "Cerrar sesión", session_path, method: :delete, data: { turbo_method: :delete }, class: "w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600" %>
+      </div>
+
       <div class="-mr-2 flex md:hidden">
         <!-- Botón del menú móvil -->
         <button type="button" class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white" data-action="click->navbar#toggleMenu" aria-controls="mobile-menu" aria-expanded="false">
@@ -35,6 +39,9 @@
   <div class="md:hidden hidden" id="mobile-menu" data-navbar-target="menu">
     <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
       <%= render 'layouts/navbar_links' %>
+      <div class="py-4 flex justify-center">
+        <%= link_to "Cerrar sesión", session_path, method: :delete, data: { turbo_method: :delete }, class: "w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600" %>
+      </div>
     </div>
   </div>
 </nav>

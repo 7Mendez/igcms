@@ -1,4 +1,5 @@
 class OfferingsController < ApplicationController
+  before_action :user_is_allowed_to_access_module?
   before_action :set_offering, only: %i[ show edit update destroy ]
 
   # GET /offerings or /offerings.json

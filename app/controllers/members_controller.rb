@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_action :user_is_allowed_to_access_module?
   before_action :set_member, only: %i[ show edit update destroy ]
 
   # GET /members or /members.json
