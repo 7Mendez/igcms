@@ -11,32 +11,38 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+  <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :nombre, class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.text_field :name, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.checkbox :status %>
-  </div>
+      <div>
+        <%= form.label :fecha_bautismo, class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.date_field :baptism_date, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :baptism_date, style: "display: block" %>
-    <%= form.date_field :baptism_date %>
-  </div>
+      <div class="col-span-2">
+        <div class="flex items-center mt-2">
+          <%= form.check_box :status, class: "form-checkbox h-5 w-5 text-blue-600" %>
+          <span class="ml-2 text-gray-700 dark:text-gray-200">Activo</span>
+        </div>
+        <div class="flex items-center mt-2">
+          <%= form.check_box :visitor, class: "form-checkbox h-5 w-5 text-blue-600" %>
+          <span class="ml-2 text-gray-700 dark:text-gray-200">Visitante</span>
+        </div>
+        <div class="flex items-center mt-2">
+          <%= form.check_box :holy_spirit, class: "form-checkbox h-5 w-5 text-blue-600" %>
+          <span class="ml-2 text-gray-700 dark:text-gray-200">Ya ha sido lleno con el Espiritu Santo</span>
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :holy_spirit, style: "display: block" %>
-    <%= form.checkbox :holy_spirit %>
-  </div>
-
-  <div>
-    <%= form.label :visitor, style: "display: block" %>
-    <%= form.checkbox :visitor %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="flex justify-end mt-6">
+      <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+        <i class="fas fa-save"></i> <%= member.new_record? ? 'Crear' : 'Actualizar' %>
+      </button>
+    </div>
+  </section>
 <% end %>
