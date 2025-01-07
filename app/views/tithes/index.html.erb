@@ -1,8 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-green-500"><%= notice %></p>
 
 <% content_for :title, "Diezmos" %>
 <% content_for :count, @tithes.count %>
-
 
 <div class="md:flex md:items-center md:justify-between">
   <%= render :partial => 'utils/show_hide_element', locals: { element: "cantidad", path: tithes_path(show_amount: params[:show_amount] != "true"), show: params[:show_amount] != "true" } %>
