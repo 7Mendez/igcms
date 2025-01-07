@@ -48,6 +48,8 @@
                             </svg>
                           <% end %>
                         </div>
+                      <% elsif cell.is_a?(Date) %>
+                        <%= cell.strftime("%A,%d de %B de %Y") %>
                       <% elsif cell.blank? %>
                         <div class="flex items-center">
                           <p> - </p>
