@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "errors/not_found"
-  root to: "members#index"
+  root to: "welcome#index"
   resource :session
   resources :diezmos, as: :tithes, controller: "tithes"
   resources :ofrendas, as: :offerings, controller: "offerings"
