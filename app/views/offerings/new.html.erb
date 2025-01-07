@@ -1,11 +1,11 @@
-<% content_for :title, "New offering" %>
+<% content_for :title, "Nueva ofrenda" %>
 
-<h1>New offering</h1>
+<section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+  <%= render "form", offering: @offering %>
 
-<%= render "form", offering: @offering %>
-
-<br>
-
-<div>
-  <%= link_to "Back to offerings", offerings_path %>
-</div>
+  <div class="flex justify-start mt-6">
+    <%= link_to offerings_path, class: "px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" do %>
+      <i class="fas fa-arrow-left"></i> Volver a ofrendas
+    <% end %>
+  </div>
+</section>

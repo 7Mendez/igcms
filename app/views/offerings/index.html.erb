@@ -3,7 +3,6 @@
 <% content_for :title, "Ofrendas" %>
 <% content_for :count, @offerings.count %>
 
-
 <div class="md:flex md:items-center md:justify-between">
   <%= render :partial => 'utils/show_hide_element', locals: { element: "cantidad", path: offerings_path(show_amount: params[:show_amount] != "true"), show: params[:show_amount] != "true" } %>
   <%= render :partial => 'utils/add_new_bottom', locals: { path: new_offering_path } %>
@@ -13,9 +12,9 @@
   <%=
       render partial: 'utils/dynamic_table', locals: {
         table_id: 'simpleDataTable',
-        headers: %w[Fecha Miembro Tipo Cantidad Nota Acciones],
-        rows: @offerings.map { |offering| [offering.date, offering.member.name, offering.offering_type, offering.amount, offering.note, { path: offering_path(offering) }] },
-        hide_rows: params[:show_amount] == "true" ? [] : [2]
+        headers: %w[Fecha Miembro Tipo Cantidad Acciones],
+        rows: @offerings.map { |offering| [offering.date, offering.member.name, offering.offering_type, offering.amount, { path: offering_path(offering) }] },
+        hide_rows: params[:show_amount] == "true" ? [] : [3]
       }
   %>
 </div>

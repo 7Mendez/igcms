@@ -1,8 +1,7 @@
 <%= form_with(model: offering) do |form| %>
   <% if offering.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(offering.errors.count, "error") %> prohibited this offering from being saved:</h2>
-
+    <div class="text-red-500">
+      <h2><%= pluralize(offering.errors.count, "error") %> prohibieron que esta ofrenda se guardara:</h2>
       <ul>
         <% offering.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,32 +10,38 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.text_field :amount %>
-  </div>
+  <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+      <div>
+        <%= form.label :amount, "Cantidad", class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.text_field :amount, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :offering_type, style: "display: block" %>
-    <%= form.collection_select :offering_type, ['General', 'Especial', 'Construccion'], :to_s, :to_s %>
-  </div>
+      <div>
+        <%= form.label :offering_type, "Tipo de ofrenda", class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.collection_select :offering_type, ['General', 'Especial', 'Construcción'], :to_s, :to_s, {}, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
+      <div>
+        <%= form.label :date, "Fecha", class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.date_field :date, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :note, style: "display: block" %>
-    <%= form.textarea :note %>
-  </div>
+      <div class="col-span-2">
+        <%= form.label :note, "Nota", class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.text_area :note, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
 
-  <div>
-    <%= form.label :member_id, style: "display: block" %>
-    <%= form.collection_select :member_id, Member.all, :id, :name %>
-  </div>
+      <div>
+        <%= form.label :member_id, "Miembro", class: "text-gray-700 dark:text-gray-200" %>
+        <%= form.collection_select :member_id, Member.all, :id, :name, {}, class: "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" %>
+      </div>
+    </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="flex justify-end mt-6">
+      <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+        <i class="fas fa-save"></i> <%= offering.new_record? ? 'Crear' : 'Actualizar' %>
+      </button>
+    </div>
+  </section>
 <% end %>
