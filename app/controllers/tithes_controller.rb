@@ -50,12 +50,18 @@ class TithesController < ApplicationController
 
   # DELETE /tithes/1 or /tithes/1.json
   def destroy
-    @tithe.destroy!
-
+  begin
+    @tithe.destroy
     respond_to do |format|
-      format.html { redirect_to tithes_path, status: :see_other, notice: "Tithe was successfully destroyed." }
+      format.html { redirect_to members_url, notice: "El diezmo ha sido eliminado." }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::InvalidForeignKey => e
+    respond_to do |format|
+      format.html { redirect_to @tithe, notice: "El diezmo no pudo ser eliminado." }
+      format.json { render json: { error: e.message }, status: :unprocessable_entity }
+    end
+  end
   end
 
   private

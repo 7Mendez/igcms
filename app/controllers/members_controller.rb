@@ -50,11 +50,17 @@ class MembersController < ApplicationController
 
   # DELETE /members/1 or /members/1.json
   def destroy
-    @member.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to members_path, status: :see_other, notice: "Member was successfully destroyed." }
-      format.json { head :no_content }
+    begin
+      @member.destroy
+      respond_to do |format|
+        format.html { redirect_to members_url, notice: "El miembro ha sido eliminado." }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::InvalidForeignKey => e
+      respond_to do |format|
+        format.html { redirect_to @member, notice: "El miembro no pudo ser eliminado." }
+        format.json { render json: { error: e.message }, status: :unprocessable_entity }
+      end
     end
   end
 

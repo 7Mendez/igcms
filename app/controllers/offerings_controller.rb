@@ -50,11 +50,17 @@ class OfferingsController < ApplicationController
 
   # DELETE /offerings/1 or /offerings/1.json
   def destroy
-    @offering.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to offerings_path, status: :see_other, notice: "Offering was successfully destroyed." }
-      format.json { head :no_content }
+    begin
+      @offering.destroy
+      respond_to do |format|
+        format.html { redirect_to members_url, notice: "La ofrenda ha sido eliminada." }
+        format.json { head :no_content }
+      end
+    rescue ActiveRecord::InvalidForeignKey => e
+      respond_to do |format|
+        format.html { redirect_to @offering, notice: "La ofrenda no pudo ser eliminada." }
+        format.json { render json: { error: e.message }, status: :unprocessable_entity }
+      end
     end
   end
 

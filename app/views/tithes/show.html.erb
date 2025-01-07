@@ -8,8 +8,9 @@
 
   <div class="flex justify-between mt-10 space-x-4">
     <div class="ml-4">
-      <%= button_to @tithe, method: :delete, class: "px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600" do %>
-        <i class="fas fa-trash-alt"></i> Eliminar este diezmo
+      <%= link_to url_for(action: :destroy, id: @tithe.id), data: {turbo_method: :delete, turbo_confirm: '¿Estás seguro de que deseas eliminar esta ofrenda?'}, class: "px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-red-700 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600" do %>
+        <i class="fas fa-trash-alt"></i>
+        Eliminar este diezmo
       <% end %>
     </div>
     <div class="flex space-x-4">
