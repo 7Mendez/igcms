@@ -27,12 +27,14 @@
   <body class="h-full">
     <div class="min-h-full">
       <%= render "layouts/navbar" %>
-      <%= render "layouts/header" %>
-      <main>
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <%= yield %>
-        </div>
-      </main>
-    </div>
+        <%= render "layouts/header" %>
+        <main>
+          <%= render :partial => 'utils/alerts', locals: { flash: flash }  if flash.any? %>
+
+          <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <%= yield %>
+          </div>
+        </main>
+      </div>
   </body>
 </html>
