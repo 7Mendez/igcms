@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_02_211100) do
     t.string "offering_type"
     t.date "date"
     t.text "note"
-    t.bigint "member_id", null: false
+    t.bigint "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_offerings_on_member_id"
