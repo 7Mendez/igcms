@@ -11,7 +11,7 @@
       render partial: 'utils/dynamic_table', locals: {
         table_id: 'simpleDataTable',
         headers: %w[Fecha Miembro Tipo Cantidad Acciones],
-        rows: @offerings.map { |offering| [offering.date, offering.member.name, offering.offering_type, offering.amount, { path: offering_path(offering) }] },
+        rows: @offerings.map { |offering| [offering.date, offering.member&.name || '-', offering.offering_type, offering.amount, { path: offering_path(offering) }] },
         hide_rows: params[:show_amount] == "true" ? [] : [3]
       }
   %>
