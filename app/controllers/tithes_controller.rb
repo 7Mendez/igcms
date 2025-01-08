@@ -53,7 +53,7 @@ class TithesController < ApplicationController
   begin
     @tithe.destroy
     respond_to do |format|
-      format.html { redirect_to offerings_url, notice: "El diezmo ha sido eliminado." }
+      format.html { redirect_to tithes_url, notice: "El diezmo ha sido eliminado." }
       format.json { head :no_content }
     end
   rescue ActiveRecord::InvalidForeignKey => e
