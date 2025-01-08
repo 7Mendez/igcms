@@ -26,7 +26,7 @@ class OfferingsController < ApplicationController
 
     respond_to do |format|
       if @offering.save
-        format.html { redirect_to @offering, notice: "Offering was successfully created." }
+        format.html { redirect_to @offering, notice: "La ofrenda ha sido creada." }
         format.json { render :show, status: :created, location: @offering }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class OfferingsController < ApplicationController
   def update
     respond_to do |format|
       if @offering.update(offering_params)
-        format.html { redirect_to @offering, notice: "Offering was successfully updated." }
+        format.html { redirect_to @offering, notice: "La ofrenda ha sido actualizada." }
         format.json { render :show, status: :ok, location: @offering }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class OfferingsController < ApplicationController
     begin
       @offering.destroy
       respond_to do |format|
-        format.html { redirect_to members_url, notice: "La ofrenda ha sido eliminada." }
+        format.html { redirect_to offerings_url, notice: "La ofrenda ha sido eliminada." }
         format.json { head :no_content }
       end
     rescue ActiveRecord::InvalidForeignKey => e

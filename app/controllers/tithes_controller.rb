@@ -26,7 +26,7 @@ class TithesController < ApplicationController
 
     respond_to do |format|
       if @tithe.save
-        format.html { redirect_to @tithe, notice: "Tithe was successfully created." }
+        format.html { redirect_to @tithe, notice: "El diezmo ha sido creado." }
         format.json { render :show, status: :created, location: @tithe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class TithesController < ApplicationController
   def update
     respond_to do |format|
       if @tithe.update(tithe_params)
-        format.html { redirect_to @tithe, notice: "Tithe was successfully updated." }
+        format.html { redirect_to @tithe, notice: "El diezmo ha sido actualizado." }
         format.json { render :show, status: :ok, location: @tithe }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class TithesController < ApplicationController
   begin
     @tithe.destroy
     respond_to do |format|
-      format.html { redirect_to members_url, notice: "El diezmo ha sido eliminado." }
+      format.html { redirect_to offerings_url, notice: "El diezmo ha sido eliminado." }
       format.json { head :no_content }
     end
   rescue ActiveRecord::InvalidForeignKey => e
