@@ -49,7 +49,7 @@
                           <% end %>
                         </div>
                       <% elsif cell.is_a?(Date) %>
-                        <%= cell.strftime("%A, %d de %b de %Y") %>
+                        <%= I18n.localize(cell, format: :long) %>
                       <% elsif cell.blank? %>
                         <div class="flex items-center">
                           <p> - </p>
