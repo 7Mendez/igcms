@@ -5,7 +5,7 @@ class CreateOfferings < ActiveRecord::Migration[8.0]
       t.string :offering_type
       t.date :date
       t.text :note
-      t.references :member, null: false, foreign_key: true
+      t.references :member, null: true, foreign_key: true
 
       t.timestamps
     end
