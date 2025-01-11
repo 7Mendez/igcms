@@ -5,7 +5,7 @@
       <div class="flex items-center">
         <div class="hidden md:block">
           <div class="flex items-baseline space-x-4">
-            <%= render 'layouts/navbar_links' %>
+            <%= nav_bar_links %>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
   <!-- Menú móvil, mostrar/ocultar basado en el estado del menú. -->
   <div class="md:hidden hidden" id="mobile-menu" data-navbar-target="menu">
     <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-      <%= render 'layouts/navbar_links' %>
+      <%= nav_bar_links %>
       <div class="py-4 flex justify-center">
         <%= link_to "Cerrar sesión", session_path, method: :delete, data: { turbo_method: :delete }, class: "w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto hover:bg-blue-600 dark:hover:bg-blue-500 dark:bg-blue-600" %>
       </div>
