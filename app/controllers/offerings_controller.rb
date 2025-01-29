@@ -4,7 +4,7 @@ class OfferingsController < ApplicationController
 
   # GET /offerings or /offerings.json
   def index
-    @offerings = Offering.all
+    @offerings = Offering.all.order(date: :desc)
   end
 
   # GET /offerings/1 or /offerings/1.json

@@ -4,7 +4,7 @@ class TithesController < ApplicationController
 
   # GET /tithes or /tithes.json
   def index
-    @tithes = Tithe.all
+    @tithes = Tithe.all.order(date: :desc)
   end
 
   # GET /tithes/1 or /tithes/1.json
