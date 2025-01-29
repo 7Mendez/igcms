@@ -107,8 +107,10 @@ es:
       # Use the strftime parameters for formats.
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
+      day: "%d"
       default: "%Y-%m-%d"
       short: "%d de %b"
+      month_and_year: "%B de %Y"
       long: "%d de %B de %Y"
 
     day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]

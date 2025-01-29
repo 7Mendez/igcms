@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "errors/not_found"
   get "admin", to: "welcome#index"
+  get "diezmos/report", to: "tithes#report"
   root to: "home#index"
   resource :session
   resources :diezmos, as: :tithes, controller: "tithes"

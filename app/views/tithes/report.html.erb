@@ -1,0 +1,42 @@
+<% content_for :title_label, "Diezmos de #{l(Date.new(@year, @month, 1), format: :month_and_year)}" %>
+<% content_for :title_content do %>
+  <div class="hide-print flex justify-end">
+    <div class="flex justify-between">
+      <form action="/diezmos/report" method="get">
+        <label>
+          <select name="month">
+            <% %i[enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre].each_with_index do |month, index| %>
+              <option value="<%= index + 1 %>" <%= params[:month].to_i == index + 1 ? "selected" : "" %>><%= month.capitalize %></option>
+            <% end %>
+          </select>
+        </label>
+        <label>
+          <input type="number" name="year" value="<%= params[:year] || Time.current.year %>" min="2000" max="<%= Time.current.year %>">
+        </label>
+        <button type="submit" class="px-8 py-2.5 leading-5 text-white transition-colors duración-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+          Filtrar
+        </button>
+      </form>
+    </div>
+  </div>
+<% end %>
+
+<div id="members">
+  <%=
+      render partial: 'utils/dynamic_table', locals: {
+        table_id: 'simpleDataTable',
+        headers: %w[Miembro, Fechas, Cantidad],
+        rows: @members_tithes.map { |member| [member.name, member.dates_list.map { |date| I18n.localize(date, format: :long) }, member.dates_list.count] },
+        hide_rows: []
+      }
+  %>
+</div>
+
+
+<style>
+  @media print{
+    .hide-print {
+        display: none;
+    }
+  }
+</style>

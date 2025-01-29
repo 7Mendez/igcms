@@ -50,6 +50,14 @@
                         </div>
                       <% elsif cell.is_a?(Date) %>
                         <%= I18n.localize(cell, format: :long) %>
+                      <% elsif cell.is_a?(Array) %>
+                        <div class="flex flex-col gap-y-1">
+                          <% cell.each do |item| %>
+                            <div class="flex items-center gap-x-2">
+                              <%= item %>
+                            </div>
+                          <% end %>
+                        </div>
                       <% elsif cell.blank? %>
                         <div class="flex items-center">
                           <p> - </p>

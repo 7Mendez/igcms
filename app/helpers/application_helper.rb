@@ -3,6 +3,7 @@ module ApplicationHelper
     { name: "Miembros", path: "/miembros", modules: [ "members" ] },
     { name: "Ofrendas", path: "/ofrendas", modules: [ "offerings" ] },
     { name: "Diezmos", path: "/diezmos", modules: [ "tithes" ] },
+    { name: "Reporte Diezmos", path: "/diezmos/report", modules: [ "tithes" ] },
     # { name: "Talentos", path: "/talentos", modules: [ "talents" ] },
     # { name: "Compradores", path: "/compradores", modules: [ "talent_buyers" ] }
   ]
